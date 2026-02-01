@@ -13,9 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ Add viewport so mobile layouts render correctly
 export const metadata: Metadata = {
   title: "Beyond January",
   description: "Consistency after motivation fades.",
+  viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
 };
 
 export default function RootLayout({
@@ -24,8 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" className="h-full">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full bg-neutral-950 text-neutral-100`}
+      >
+        {/* AppShell controls auth layout + nav */}
         <AppShell>{children}</AppShell>
       </body>
     </html>
